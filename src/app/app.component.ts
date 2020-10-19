@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 
 @Component({
@@ -12,8 +12,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.signupForm = new FormGroup({
-      'email': new FormControl(null),
-      'password': new FormControl(null)
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, Validators.required)
     })
+  }
+
+  onSubmit(){
+    console.log(this.signupForm);
   }
 }
