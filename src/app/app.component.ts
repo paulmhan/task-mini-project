@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.signupForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, Validators.required)
+      'password': new FormControl(null, [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
     })
   }
 
