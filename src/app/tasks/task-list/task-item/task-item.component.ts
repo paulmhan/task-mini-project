@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from "../../task.model";
+
 
 @Component({
   selector: 'app-task-item',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() task: Task;
+  @Input() index: number;
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-
 }
