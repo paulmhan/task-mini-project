@@ -6,13 +6,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="btn-group" appDropdown>
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Manage Task <span class="caret"></span>
+            <button (click)="deleteTask()" type="button" class="btn btn-danger dropdown-toggle">
+                Delete Task 
             </button>
-            <ul class="dropdown-menu">
-                <li><a style="cursor: pointer;" (click)="onEditTask()">Edit Task</a></li>
-                <li><a style="cursor: pointer;">Delete Task</a></li>
-            </ul>
         </div>
     </div>
 </div>

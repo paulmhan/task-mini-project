@@ -30,7 +30,8 @@ export class TaskDetailsComponent implements OnInit {
       );
   }
 
-  onEditTask() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+  deleteTask() {
+    // this.router.navigate(['edit'], {relativeTo: this.route});
+    console.log("delete task");
   }
 }
