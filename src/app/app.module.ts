@@ -8,6 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
 
 
 
@@ -18,6 +21,9 @@ import { TasksComponent } from './tasks/tasks.component';
     SignInComponent,
     SignUpComponent,
     TasksComponent,
+    TaskDetailsComponent,
+    TaskListComponent,
+    TaskItemComponent,
   ],
   imports: [
     BrowserModule,
