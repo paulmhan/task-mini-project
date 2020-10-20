@@ -1,4 +1,4 @@
-export class Files {
+export class File {
     constructor(public title: string) {}
   }
   

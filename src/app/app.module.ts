@@ -11,6 +11,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
+import { TaskService } from "./services/task.service";
 
 
 
@@ -30,7 +31,7 @@ import { TaskItemComponent } from './tasks/task-list/task-item/task-item.compone
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
