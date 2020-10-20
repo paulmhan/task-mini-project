@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { Task } from "../task.model";
+import { TaskService } from "../../services/task.service";
+
 
 @Component({
   selector: 'app-task-list',
@@ -7,9 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[];
 
-  ngOnInit(): void {
+  constructor(private taskService: TaskService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
+
+  ngOnInit() {
+    this.tasks = this.taskService.getTasks();
+  }
+
+  // onNewTask() {
+  //   this.router.navigate(['new'], {relativeTo: this.route});
+  // }
 
 }

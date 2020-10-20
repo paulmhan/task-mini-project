@@ -36,6 +36,14 @@ export class TaskService {
       ])
   ]
 
+  getTasks() {
+    return this.tasks.slice();
+  }
+
+  getTask(index: number) {
+    return this.tasks[index];
+  }
+
 
 
 
