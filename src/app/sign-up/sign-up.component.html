@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <h1>Sign Up</h1>
-      <form [formGroup]="signupForm" (submit)="onSubmit()">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="email">Email Address</label>
           <input id="email" formControlName="email" type="email" class="form-control"
@@ -16,27 +16,27 @@
           <input id="password" formControlName="password" type="password" class="form-control"
             [ngClass]="signupForm.controls['password'].invalid ? 'is-invalid' : ''">
           <br>
-          <label class="col"
+          <label
             [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
             Must be at least 8 characters!
           </label>
           <br>
-          <label class="col"
+          <label
             [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
             Must contain at least 1 number!
           </label>
           <br>
-          <label class="col"
+          <label
             [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
             Must contain at least 1 in Capital Case!
           </label>
           <br>
-          <label class="col"
+          <label
             [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
             Must contain at least 1 Letter in Small Case!
           </label>
           <br>
-          <label class="col"
+          <label
             [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
             Must contain at least 1 Special Character!
           </label>
