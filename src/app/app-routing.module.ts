@@ -5,7 +5,7 @@ import { SignInComponent } from "./sign-in/sign-in.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 import { TasksComponent } from "./tasks/tasks.component";
 import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
-
+import { TaskAddComponent } from "./tasks/task-add/task-add.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -13,6 +13,7 @@ const appRoutes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   {
     path: 'tasks', component: TasksComponent, children: [
+      { path: 'add', component: TaskAddComponent },
       { path: ':id', component: TaskDetailsComponent }
     ]
   },

@@ -12,9 +12,9 @@ export class SignInComponent implements OnInit {
   ngOnInit(){
     this.signinForm = new FormGroup({
       'email': new FormControl('', [Validators.required, Validators.email]),
-      'password': new FormControl('', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
+      'password': new FormControl('', [Validators.required])
     })
-    // (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,}
+  
   }
 
   onSubmit(){

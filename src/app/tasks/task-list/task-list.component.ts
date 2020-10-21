@@ -23,8 +23,8 @@ export class TaskListComponent implements OnInit {
     this.tasks = this.taskService.getTasks();
   }
 
-  // onNewTask() {
-  //   this.router.navigate(['new'], {relativeTo: this.route});
-  // }
+  addTask() {
+    this.router.navigate(['add'], {relativeTo: this.route});
+  }
 
 }

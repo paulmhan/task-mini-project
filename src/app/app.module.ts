@@ -12,6 +12,8 @@ import { TaskDetailsComponent } from './tasks/task-details/task-details.componen
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
 import { TaskService } from "./services/task.service";
+import { TaskAddComponent } from './tasks/task-add/task-add.component';
+
 
 
 
@@ -26,6 +28,7 @@ import { TaskService } from "./services/task.service";
     TaskDetailsComponent,
     TaskListComponent,
     TaskItemComponent,
+    TaskAddComponent,
   ],
   imports: [
     BrowserModule,
