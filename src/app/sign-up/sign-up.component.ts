@@ -7,11 +7,11 @@ import { CustomValidators } from '../custom-validators';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
-  public frmSignup: FormGroup;
+export class SignUpComponent {
+  public signupForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.frmSignup = this.createSignupForm();
+    this.signupForm = this.createSignupForm();
   }
 
   createSignupForm(): FormGroup {
@@ -56,8 +56,8 @@ export class SignUpComponent implements OnInit {
     );
   }
 
-  submit() {
+  onSubmit() {
     // do signup or something
-    console.log(this.frmSignup.value);
+    console.log(this.signupForm.value);
   }
 }
