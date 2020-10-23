@@ -37,6 +37,7 @@ export class TaskAddComponent implements OnInit {
     return (<FormArray>this.taskForm.get('files')).controls;
   }
 
+
   onDeleteSub(index: number){
     (<FormArray>this.taskForm.get('subTasks')).removeAt(index);
     
@@ -66,7 +67,7 @@ export class TaskAddComponent implements OnInit {
     let subTasks = new FormArray([]);
     let files = new FormArray([]);
     this.taskForm = new FormGroup({
-      "title": new FormControl("", Validators.required),
+      "title": new FormControl("", [Validators.required, Validators.maxLength(100)]),
       "dueDate": new FormControl("", Validators.required),
       "description": new FormControl("", Validators.required),
       "subTasks": subTasks,
