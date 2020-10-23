@@ -33,9 +33,9 @@ export class TaskAddComponent implements OnInit {
     return (<FormArray>this.taskForm.get('subTasks')).controls;
   }
 
-  // get fileControls() { // a getter!
-  //   return (<FormArray>this.taskForm.get('files')).controls;
-  // }
+  get fileControls() { // a getter!
+    return (<FormArray>this.taskForm.get('files')).controls;
+  }
 
   onDeleteSub(index: number){
     console.log("deleted", index);
@@ -49,14 +49,23 @@ export class TaskAddComponent implements OnInit {
     );
   }
 
+  onAddFile(){
+    (<FormArray>this.taskForm.get('files')).push(
+      new FormGroup({
+        filePath: new FormControl(null, Validators.required)
+      })
+    );
+  }
+
   private initForm(){
     let subTasks = new FormArray([]);
+    let files = new FormArray([]);
     this.taskForm = new FormGroup({
       "title": new FormControl("", Validators.required),
       "dueDate": new FormControl("", Validators.required),
       "description": new FormControl("", Validators.required),
       "subTasks": subTasks,
-      // "files": files
+      "files": files
     });
   }
 }

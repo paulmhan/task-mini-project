@@ -36,43 +36,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-12" formArrayName="subTasks">
-                  <div
-                    class="row"
-                    style="margin-top: 10px;"
-                    *ngFor="let subCtrl of subControls; let i = index"
-                    [formGroupName]="i"
-                    >
-                    <div class="col-xs-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="name"
-                        >
-                    </div>
-                    <div class="col-xs-2">
-                      <button
-                        type="button"
-                        class="btn btn-danger"
-                        >X</button>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <button
-                        type="button"
-                        class="btn btn-success"
-                        (click)="onAddSub()">Add Subtask</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <!-- <div class="row">
-                <div class="col-xs-12" formArrayName="files">
-                    <label for="description">Files</label>
-                    <div class="row" style="margin-top: 10px;">
+                    <label>SubTasks</label>
+
+                    <div class="row" style="margin-top: 10px;" *ngFor="let subCtrl of subControls; let i = index"
+                        [formGroupName]="i">
                         <div class="col-xs-10">
-                            <input type="text" class="form-control" formControlName="files">
+                            <input type="text" class="form-control" formControlName="name">
                         </div>
                         <div class="col-xs-2">
                             <button type="button" class="btn btn-danger">X</button>
@@ -81,11 +50,32 @@
                     <hr>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button type="button" class="btn btn-success">Add File</button>
+                            <button type="button" class="btn btn-success" (click)="onAddSub()">Add Subtask</button>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="files">
+                    <label>Files</label>
+                    <div class="row" style="margin-top: 10px;" *ngFor="let fileCtrl of fileControls; let i = index"
+                        [formGroupName]="i">
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" formControlName="filePath">
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="button" class="btn btn-danger">X</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn btn-success" (click)="onAddFile()">Add File</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 
