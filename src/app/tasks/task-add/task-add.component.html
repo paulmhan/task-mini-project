@@ -36,25 +36,38 @@
             </div>
             <div class="row">
                 <div class="col-xs-12" formArrayName="subTasks">
-                    <label for="description">Subtasks</label>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" formControlName="subTitle">
-                        </div>
-                        <div class="col-xs-2">
-                            <button type="button" class="btn btn-danger">X</button>
-                        </div>
+                  <div
+                    class="row"
+                    style="margin-top: 10px;"
+                    *ngFor="let subCtrl of subControls; let i = index"
+                    [formGroupName]="i"
+                    >
+                    <div class="col-xs-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="name"
+                        >
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-success">Add Sub Task</button>
-                        </div>
+                    <div class="col-xs-2">
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        >X</button>
                     </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <button
+                        type="button"
+                        class="btn btn-success"
+                        (click)="onAddSub()">Add Subtask</button>
+                    </div>
+                  </div>
                 </div>
-            </div>
-            <br>
-            <div class="row">
+              </div>
+            <!-- <div class="row">
                 <div class="col-xs-12" formArrayName="files">
                     <label for="description">Files</label>
                     <div class="row" style="margin-top: 10px;">
@@ -72,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </form>
     </div>
 

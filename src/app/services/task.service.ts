@@ -18,7 +18,7 @@ export class TaskService {
         new SubTask('Get TP too'),
         new SubTask('Get gas first')
       ],
-      new Date(),
+      "12/25/21",
       [
         new File("Test Path")
       ]),
@@ -30,7 +30,7 @@ export class TaskService {
         new SubTask('Play fetch at the park'),
         new SubTask('Give pets')
       ],
-      new Date(),
+      "10/10/20",
       [
         new File("Test Path 2")
       ])
