@@ -38,7 +38,12 @@ export class TaskAddComponent implements OnInit {
   }
 
   onDeleteSub(index: number){
-    console.log("deleted", index);
+    (<FormArray>this.taskForm.get('subTasks')).removeAt(index);
+    
+  }
+
+  onDeleteFile(index: number) {
+    (<FormArray>this.taskForm.get('files')).removeAt(index);
   }
 
   onAddSub(){

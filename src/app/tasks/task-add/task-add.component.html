@@ -44,7 +44,7 @@
                             <input type="text" class="form-control" formControlName="name">
                         </div>
                         <div class="col-xs-2">
-                            <button type="button" class="btn btn-danger">X</button>
+                            <button type="button" class="btn btn-danger" (click)="onDeleteSub(i)">X</button>
                         </div>
                     </div>
                     <hr>
@@ -65,7 +65,7 @@
                             <input type="text" class="form-control" formControlName="filePath">
                         </div>
                         <div class="col-xs-2">
-                            <button type="button" class="btn btn-danger">X</button>
+                            <button type="button" class="btn btn-danger" (click)="onDeleteFile(i)">X</button>
                         </div>
                     </div>
                     <hr>
