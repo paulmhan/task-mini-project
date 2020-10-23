@@ -1,11 +1,14 @@
 require('dotenv').config();
 const Koa = require("koa");
-const Router = require("koa-router");
+const routes = require("./routes")
+
 
 
 const app = new Koa();
-const router = new Router();
 
+// Setup middlewares
+require("./passport");
+app.use(routes);
 
 
 
