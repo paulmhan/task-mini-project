@@ -7,8 +7,8 @@ const routes = require("./routes")
 const app = new Koa();
 
 // Setup middlewares
-require("./passport");
-app.use(routes);
+// require("./passport");
+// app.use(routes);
 
 
 
