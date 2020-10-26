@@ -18,7 +18,7 @@ export class TaskService {
         new SubTask('Get TP too'),
         new SubTask('Get gas first')
       ],
-      "12/25/21",
+      new Date(2021, 4, 5),
       [
         new File("Test Path")
       ]),
@@ -30,7 +30,7 @@ export class TaskService {
         new SubTask('Play fetch at the park'),
         new SubTask('Give pets')
       ],
-      "10/10/20",
+      new Date(2021, 4, 5),
       [
         new File("Test Path 2")
       ])
@@ -44,11 +44,11 @@ export class TaskService {
     return this.tasks[index];
   }
 
-  addTask(task: Task){
+  addTask(task: Task) {
     this.tasks.push(task);
   }
 
-  
+
 
 
 
