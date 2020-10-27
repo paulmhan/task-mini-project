@@ -8,6 +8,6 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-const pool = mysql.createPool(config);
 
-export default pool;
+
+export default connection;

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { Task } from "../tasks/task.model";
 import { SubTask } from "../shared/sub-tasks.model";
 import { File } from "../shared/files.model";
+
 
 
 @Injectable({
@@ -46,6 +48,7 @@ export class TaskService {
 
   addTask(task: Task) {
     this.tasks.push(task);
+    // console.log(connection);
   }
 
 
