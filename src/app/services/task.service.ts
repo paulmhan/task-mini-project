@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs'; 
 
 import { Task } from "../tasks/task.model";
 import { SubTask } from "../shared/sub-tasks.model";
 import { File } from "../shared/files.model";
+
 
 
 
@@ -11,6 +14,8 @@ import { File } from "../shared/files.model";
 })
 
 export class TaskService {
+
+  constructor(private http: HttpClient){}
 
   private tasks: Task[] = [
     new Task(
@@ -38,8 +43,8 @@ export class TaskService {
       ])
   ]
 
-  getTasks() {
-    return this.tasks.slice();
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>('/tasks/getAll');
   }
 
   getTask(index: number) {

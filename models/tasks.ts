@@ -1,10 +1,20 @@
-const connnection = require('../config/connection.ts');
+declare var global: any;
 
 
-export class Tasks {
+export default class Tasks {
 
-    static getTasks(ctx){
-        console.log(ctx);
+    static async getTasks(ctx){
+        // ctx.body = "hello";
+        // console.log("ssd")
+        const [data] = await global.db.query(
+            'SELECT * FROM tasks'
+        );
+        ctx.body = data;
+        // pool.query('SELECT * FROM tasks', (err,res) => {
+        //     if (err) throw err;
+        //     console.log(res);
+        //     return ctx.body = res;
+        // })
     }
 
     static getTaskById(){
@@ -12,7 +22,7 @@ export class Tasks {
     }
 
     static addTask(){
-        console.log("hi")
+        
     }
 
 }

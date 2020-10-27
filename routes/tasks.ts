@@ -1,12 +1,12 @@
-const { Tasks } = require('../models/tasks.ts');
-const Router = require('koa-router');
+import Tasks from '../models/tasks';
+import * as Router from 'koa-router';
 const router = new Router();
 
 
-router.prefix('/tasks');
+// router.prefix('/tasks');
 
-router.get('/add', Tasks.addTask);
+router.get('/tasks/getAll', Tasks.getTasks);
 
 
 
-module.exports = router.routes();
+export default router.routes();

@@ -20,7 +20,10 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tasks = this.taskService.getTasks();
+    this.taskService.getTasks().subscribe(res => {
+      console.log(res);
+      this.tasks = res;
+    });
   }
 
   addTask() {
