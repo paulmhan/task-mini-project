@@ -9,9 +9,7 @@ import { File } from "../shared/files.model";
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class TaskService {
 
@@ -44,9 +42,11 @@ export class TaskService {
   ]
 
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>('/tasks/getAll');
+    return this.http.get<Task[]>('/tasks/get');
   }
 
+
+ 
   getTask(index: number) {
     return this.tasks[index];
   }

@@ -15,19 +15,26 @@ export class TaskListComponent implements OnInit {
   tasks: Task[];
 
   constructor(private taskService: TaskService,
-              private router: Router,
-              private route: ActivatedRoute) {
+    private router: Router,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.taskService.getTasks().subscribe(res => {
-      console.log(res);
-      this.tasks = res;
+    this.taskService.getTasks().subscribe({
+      next: res => {
+        console.log(res);
+        this.tasks = res;
+      },
+      error: error => {
+        console.log(error);
+      }
     });
+
+
   }
 
   addTask() {
-    this.router.navigate(['add'], {relativeTo: this.route});
+    this.router.navigate(['add'], { relativeTo: this.route });
   }
 
 }

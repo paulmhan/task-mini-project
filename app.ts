@@ -9,7 +9,8 @@ import * as mysql from 'mysql2/promise';
 const app = new Koa();
 
 app.use(cors({
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    allowMethods: ['GET', 'POST', 'DELETE'],
 }));
 
 

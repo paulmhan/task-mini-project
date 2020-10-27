@@ -4,21 +4,22 @@ declare var global: any;
 export default class Tasks {
 
     static async getTasks(ctx){
-        // ctx.body = "hello";
-        // console.log("ssd")
         const [data] = await global.db.query(
             'SELECT * FROM tasks'
         );
-        ctx.body = data;
-        // pool.query('SELECT * FROM tasks', (err,res) => {
-        //     if (err) throw err;
-        //     console.log(res);
-        //     return ctx.body = res;
-        // })
+        return ctx.body = data;
+        
     }
 
-    static getTaskById(){
-
+    static async getTaskById(ctx){
+        let taskId = ctx.params.id;
+        const [data] = await global.db.query(
+            'SELECT * FROM tasks WHERE task_id = :taskId',
+            {
+                taskId
+            }
+        );
+        return ctx.body = data;
     }
 
     static addTask(){
