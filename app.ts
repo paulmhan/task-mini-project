@@ -3,6 +3,7 @@ declare var global: any;
 require('dotenv').config();
 
 import TaskRoutes from './routes/tasks';
+import AuthRoutes from './routes/auth';
 import * as Koa from 'koa';
 import * as cors from 'koa2-cors';
 import * as mysql from 'mysql2/promise';
@@ -45,7 +46,7 @@ app.use(async function dbConnection(ctx, next){
 
 
 app.use(TaskRoutes);
-
+app.use(AuthRoutes);
 
 // Create the server
 app.listen(process.env.PORT || 3001);

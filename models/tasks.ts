@@ -53,10 +53,3 @@ export default class Tasks {
 }
 
 
-
-
-
-//get all tasks
-//get a task
-//delete a task
-//add a task
