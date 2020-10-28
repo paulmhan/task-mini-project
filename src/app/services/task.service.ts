@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'; 
+import { environment } from "../../environments/environment";
 
 import { Task } from "../tasks/task.model";
 import { SubTask } from "../shared/sub-tasks.model";
@@ -41,8 +42,8 @@ export class TaskService {
       ])
   ]
 
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>('/tasks/get');
+  getTasks(): Promise<Task[]> {
+    return this.http.get<Task[]>(`${environment.apiURL}/tasks/get`).toPromise();
   }
 
 
@@ -52,8 +53,7 @@ export class TaskService {
   }
 
   addTask(task: Task) {
-    this.tasks.push(task);
-    // console.log(connection);
+    return this.http.post<Task[]>('tasks/add', task);
   }
 
 

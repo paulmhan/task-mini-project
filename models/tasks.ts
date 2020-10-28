@@ -22,8 +22,8 @@ export default class Tasks {
         return ctx.body = data;
     }
 
-    static addTask(){
-        
+    static addTask(ctx){
+        console.log(ctx.response.body);
     }
 
 }

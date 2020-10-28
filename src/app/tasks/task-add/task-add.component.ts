@@ -27,7 +27,9 @@ export class TaskAddComponent implements OnInit {
 
   onSubmit(){
     console.log(this.taskForm.value);
-    this.taskService.addTask(this.taskForm.value);
+    this.taskService.addTask(this.taskForm.value).subscribe(res => {
+      console.log(res);
+    });
   }
 
   get subControls() { // a getter!
