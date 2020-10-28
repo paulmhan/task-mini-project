@@ -28,6 +28,9 @@ export class TaskDetailsComponent implements OnInit {
           this.task = this.taskService.getTask(this.id);
         }
       );
+    // this.taskService.getTask(1).then(res => {
+    //   this.task = res;
+    // })
   }
 
   deleteTask() {

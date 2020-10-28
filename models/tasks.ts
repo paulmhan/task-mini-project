@@ -12,11 +12,11 @@ export default class Tasks {
     }
 
     static async getTaskById(ctx){
-        let taskId = ctx.params.id;
+        let taskID = ctx.params.id;
         const [data] = await global.db.query(
-            'SELECT * FROM tasks WHERE task_id = :taskId',
+            'SELECT * FROM tasks WHERE taskID = :taskID',
             {
-                taskId
+                taskID
             }
         );
         return ctx.body = data;
