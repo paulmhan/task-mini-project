@@ -27,8 +27,10 @@ export class TaskService {
     return this.tasks[index];
   }
 
-  addTask(task: Task) {
-    return this.http.post<Task[]>('tasks/add', task);
+  addTask(task: Task): Promise<Task> {
+    this.tasks.push(task);
+    this.tasksChanged.next(this.tasks.slice());
+    return this.http.post<Task>(`${environment.apiURL}/tasks/add`, task).toPromise();
   }
 
   setTasks(tasks: Task[]){
@@ -37,8 +39,8 @@ export class TaskService {
 
   deleteTask(index: number): Observable<{}>{
     this.tasks.splice(index,1);
-    let i = index + 1;
     this.tasksChanged.next(this.tasks.slice());
+    let i = index + 1;
     return this.http.delete(`${environment.apiURL}/tasks/delete/${i}`);
   }
 

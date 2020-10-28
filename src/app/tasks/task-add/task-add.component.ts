@@ -27,9 +27,10 @@ export class TaskAddComponent implements OnInit {
 
   onSubmit(){
     console.log(this.taskForm.value);
-    this.taskService.addTask(this.taskForm.value).subscribe(res => {
+    this.taskService.addTask(this.taskForm.value).then(res => {
       console.log(res);
     });
+    this.router.navigate(["../"], { relativeTo: this.route })
   }
 
   get subControls() { // a getter!

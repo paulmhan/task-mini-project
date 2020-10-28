@@ -7,7 +7,9 @@ import * as Koa from 'koa';
 import * as cors from 'koa2-cors';
 import * as mysql from 'mysql2/promise';
 
+
 const app = new Koa();
+
 
 app.use(cors({
     'Access-Control-Allow-Origin': '*',

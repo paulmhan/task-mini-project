@@ -28,14 +28,10 @@ export class TaskDetailsComponent implements OnInit {
           this.task = this.taskService.getTask(this.id);
         }
       );
-    // this.taskService.getTask(1).then(res => {
-    //   this.task = res;
-    // })
   }
 
   deleteTask() {
     this.taskService.deleteTask(this.id).subscribe();
-    // this.taskService.getTasks();
     this.router.navigate(['/tasks'], {relativeTo: this.route});
   }
 }
