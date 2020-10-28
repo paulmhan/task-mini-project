@@ -47,9 +47,7 @@ export class TaskService {
     return this.http.get<Task[]>(`${environment.apiURL}/tasks/get`).toPromise();
   }
 
-
   getTask(index: number){
-    // return this.http.get<Task>(`${environment.apiURL}/tasks/get/${index}`).toPromise();
     return this.tasks[index];
   }
 
@@ -59,6 +57,10 @@ export class TaskService {
 
   setTasks(tasks: Task[]){
     this.tasks = tasks;
+  }
+
+  deleteTask(index: number): Observable<{}>{
+    return this.http.delete(`${environment.apiURL}/tasks/delete/${index}`);
   }
 
 

@@ -26,6 +26,16 @@ export default class Tasks {
         console.log(ctx.response.body);
     }
 
+    static async deleteTaskById(ctx){
+        let taskID = ctx.params.id;
+        const [data] = await global.db.query(
+            'DELETE FROM tasks WHERE taskID = :taskID',
+            {
+                taskID
+            }
+        );
+        return ctx.body = data;
+    }
 }
 
 

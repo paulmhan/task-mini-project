@@ -11,5 +11,7 @@ router.get('/tasks/get/:id', Tasks.getTaskById);
 
 router.post('/tasks/add', Tasks.addTask);
 
+router.delete('/tasks/delete/:id', Tasks.deleteTaskById);
+
 
 export default router.routes();
