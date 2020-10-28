@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs'; 
+import { Observable, Subject } from 'rxjs'; 
 import { environment } from "../../environments/environment";
 
 import { Task } from "../tasks/task.model";
@@ -14,34 +14,10 @@ import { File } from "../shared/files.model";
 @Injectable()
 
 export class TaskService {
+  tasksChanged = new Subject<Task[]>();
 
   constructor(private http: HttpClient){}
   private tasks: Task[] = [];
-  // private tasks: Task[] = [
-  //   new Task(
-  //     'Buy Paper Towels',
-  //     'Go to Costco and buy paper towels',
-  //     [
-  //       new SubTask('Get TP too'),
-  //       new SubTask('Get gas first')
-  //     ],
-  //     new Date(2021, 4, 5),
-  //     [
-  //       new File("Test Path")
-  //     ]),
-
-  //   new Task(
-  //     'Walk the dogs',
-  //     'The dogs need to be walked at 3pm',
-  //     [
-  //       new SubTask('Play fetch at the park'),
-  //       new SubTask('Give pets')
-  //     ],
-  //     new Date(2021, 4, 5),
-  //     [
-  //       new File("Test Path 2")
-  //     ])
-  // ]
 
   getTasks(): Promise<Task[]> {
     return this.http.get<Task[]>(`${environment.apiURL}/tasks/get`).toPromise();
@@ -60,7 +36,10 @@ export class TaskService {
   }
 
   deleteTask(index: number): Observable<{}>{
-    return this.http.delete(`${environment.apiURL}/tasks/delete/${index}`);
+    this.tasks.splice(index,1);
+    let i = index + 1;
+    this.tasksChanged.next(this.tasks.slice());
+    return this.http.delete(`${environment.apiURL}/tasks/delete/${i}`);
   }
 
 

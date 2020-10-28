@@ -34,7 +34,8 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   deleteTask() {
+    this.taskService.deleteTask(this.id).subscribe();
+    // this.taskService.getTasks();
     this.router.navigate(['/tasks'], {relativeTo: this.route});
-    console.log("delete task");
   }
 }
