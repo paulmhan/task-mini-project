@@ -3,6 +3,7 @@ const globalAny:any = global;
 const jwt = require('jsonwebtoken');
 // const Users = require('../models/auth');
 const secret = process.env.JWT_SECRET || 'secret';
+const wrongUserPassMsg = 'Incorrect username and/or password.';
 
 module.exports = async (ctx) => {
     const { email, password } = ctx.request.body;
@@ -17,7 +18,7 @@ module.exports = async (ctx) => {
         }
     );
     console.log("+++++++", dbUser);
-    if (!dbUser) ctx.throw(401, 'No such user.');
+    if (!dbUser) ctx.throw(401, wrongUserPassMsg);
     if (password === dbUser.password) {
       /* Sign and return the token just like before
        * except this time, sub is the actual database
@@ -26,6 +27,6 @@ module.exports = async (ctx) => {
       const token = jwt.sign(payload, secret);
       ctx.body = token;
     } else {
-      ctx.throw(401, 'Incorrect password.');
+      ctx.throw(401, wrongUserPassMsg);
     }
 };
