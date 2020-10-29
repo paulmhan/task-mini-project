@@ -37,7 +37,7 @@ const connection = {
 const pool = mysql.createPool(connection);
 
 
-app.use(async function dbConnection(ctx, next){
+app.use(async function dbConnection(ctx, next) {
     ctx.state.db = global.db = await pool.getConnection();
     ctx.state.db.connection.config.namedPlaceholders = true;
     await next();
