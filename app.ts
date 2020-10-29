@@ -24,7 +24,7 @@ app.use(cors({
     'Access-Control-Allow-Origin': '*',
     allowMethods: ['GET', 'POST', 'DELETE'],
 }));
-app.use(bodyParser());
+// app.use(bodyParser());
 
 
 //establish connection to db
@@ -44,7 +44,7 @@ app.use(async function dbConnection(ctx, next) {
     ctx.state.db.release();
 })
 
-router.post('/auth', authRoute);
+router.post('/auth', bodyParser(), authRoute);
 
 
 

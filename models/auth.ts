@@ -21,15 +21,16 @@ export default class Users {
         return ctx.body = data;
     }
 
-    static async getUserByName(ctx) {
-        console.log(ctx.request.body);
-        let email = ctx.params.name;
+    static async findUserByEmail(ctx) {
+        console.log(ctx.request.body)
+        // console.log("email", email);
+        let email = ctx.request.body.email;
         const [data] = await global.db.query(
             `SELECT * FROM users WHERE email = :email`,
             {
                 email
             }
         );
-        return ctx.body = data;
+        return data;
     }
 }
