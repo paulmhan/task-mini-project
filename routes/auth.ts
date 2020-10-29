@@ -1,11 +1,5 @@
-import Users from '../models/auth';
-import * as Router from 'koa-router';
+const jwt = require('jsonwebtoken');
 
-
-const router = new Router();
-
-router.get('/users', Users.getUsers)
-router.get('/users/get/:id', Users.getUserById);
-router.get('/users/:name', Users.getUserByName);
-
-export default router.routes();
+module.exports = (ctx) => {
+    ctx.body = 'I am the auth route.';
+  };
