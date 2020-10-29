@@ -63,6 +63,17 @@ export default class Tasks {
         );
         return ctx.body = data;
     }
+
+    static async getSubTaskById(ctx) {
+        let taskID = ctx.params.id;
+        const [data] = await global.db.query(
+            'SELECT * FROM subTasks WHERE taskID = :taskID',
+            {
+                taskID
+            }
+        );
+        return ctx.body = data;
+    }
 }
 
 

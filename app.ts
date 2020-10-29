@@ -8,14 +8,10 @@ import * as Koa from 'koa';
 import * as cors from 'koa2-cors';
 import * as mysql from 'mysql2/promise';
 import * as bodyParser from 'koa-bodyparser';
-import * as session from 'koa-session';
 
 
 const app = new Koa();
 
-// sessions
-app.keys = ['super-secret-key'];
-app.use(session(app));
 
 //cors
 app.use(cors({

@@ -44,6 +44,11 @@ export class TaskService {
     return this.http.delete(`${environment.apiURL}/tasks/delete/${i}`);
   }
 
+  getSubTasks(index: number){
+    let i = index + 1;
+    return this.http.get(`${environment.apiURL}/subtasks/get/${i}`);
+  }
+
 
 
 

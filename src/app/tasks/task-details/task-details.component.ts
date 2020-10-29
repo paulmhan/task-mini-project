@@ -14,6 +14,7 @@ export class TaskDetailsComponent implements OnInit {
 
   task: Task;
   id: number;
+  subTasks: [];
 
   constructor(private taskService: TaskService,
               private route: ActivatedRoute,
@@ -24,8 +25,11 @@ export class TaskDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
+          console.log(params);
           this.id = +params['id'];
           this.task = this.taskService.getTask(this.id);
+          console.log(this.taskService.getSubTasks(this.id));
+  
         }
       );
   }
