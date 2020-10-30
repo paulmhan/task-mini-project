@@ -16,6 +16,8 @@ import { TaskAddComponent } from './tasks/task-add/task-add.component';
 
 import { TaskService } from "./services/task.service";
 import { JWTService } from './services/jwt.service';
+import { AuthService } from './services/auth.service';
+import { RestService } from './services/rest.service';
 
 
 
