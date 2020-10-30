@@ -25,7 +25,7 @@ app.use(cors({
     'Access-Control-Allow-Origin': '*',
     allowMethods: ['GET', 'POST', 'DELETE'],
 }));
-// app.use(bodyParser());
+
 
 
 //establish connection to db
