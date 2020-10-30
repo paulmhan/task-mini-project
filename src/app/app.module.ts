@@ -12,8 +12,10 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
-import { TaskService } from "./services/task.service";
 import { TaskAddComponent } from './tasks/task-add/task-add.component';
+
+import { TaskService } from "./services/task.service";
+import { JWTService } from './services/jwt.service';
 
 
 
@@ -38,7 +40,13 @@ import { TaskAddComponent } from './tasks/task-add/task-add.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [TaskService],
+  providers: [
+    { provide: 'generateXhrLogs', useValue: false },
+    TaskService,
+    RestService,
+    JWTService,
+    AuthService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
