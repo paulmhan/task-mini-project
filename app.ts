@@ -2,11 +2,12 @@ declare var global: any;
 
 require('dotenv').config();
 
-// import TaskRoutes from './routes/tasks';
 // import AuthRoutes from './routes/auth';
 // import errorHandler from './middleware/errorHandler';
 const errorHandler = require('./middleware/errorHandler');
+const authenticated = require('./middleware/authenticated');
 const authRoute = require('./routes/auth');
+const tasksRoute = require('./routes/tasks');
 
 import * as Koa from 'koa';
 import * as cors from 'koa2-cors';
@@ -45,6 +46,7 @@ app.use(async function dbConnection(ctx, next) {
 })
 
 router.post('/auth', bodyParser(), authRoute);
+router.get('/tasks', authenticated, tasksRoute);
 
 
 
