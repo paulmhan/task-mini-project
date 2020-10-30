@@ -1,7 +1,7 @@
 // declare var global: any;
 const globalAny:any = global;
 const jwt = require('jsonwebtoken');
-// const Users = require('../models/auth');
+const bcrypt = require('../utilities/bcrypt.ts');
 const secret = process.env.JWT_SECRET || 'secret';
 const wrongUserPassMsg = 'Incorrect username and/or password.';
 
@@ -17,12 +17,12 @@ module.exports = async (ctx) => {
             email
         }
     );
-    console.log("+++++++", dbUser);
+    // console.log("+++++++", dbUser);
     if (!dbUser) ctx.throw(401, wrongUserPassMsg);
-    if (password === dbUser.password) {
-      /* Sign and return the token just like before
-       * except this time, sub is the actual database
-       * user ID. */
+    if (await bcrypt.compare(password, dbUser.password)) {
+      // payload: the actual data we want to store in the token
+      // secret: a secret key that we sign the token with. 
+      // Only our server will know the secret, 
       const payload = { sub: dbUser.userID };
       const token = jwt.sign(payload, secret);
       ctx.body = token;
