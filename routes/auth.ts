@@ -1,6 +1,7 @@
 // declare var global: any;
 const globalAny:any = global;
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
+import * as jwt from 'jsonwebtoken';
 const bcrypt = require('../utilities/bcrypt.ts');
 const secret = process.env.JWT_SECRET || 'secret';
 const wrongUserPassMsg = 'Incorrect username and/or password.';
