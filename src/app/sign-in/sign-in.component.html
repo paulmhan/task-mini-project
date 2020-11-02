@@ -4,7 +4,7 @@
           <h1>Sign In</h1>
         <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" type="email">Email</label>
             <input
               type="text"
               id="email"
@@ -17,9 +17,9 @@
           <div class="form-group">
             <label for="password">Password</label>
             <input
-              type="text"
+              type="password"
               id="password"
-              formControleName="password"
+              formControlName="password"
               class="form-control">
           </div>
           <button class="btn btn-primary" type="submit">Submit</button>

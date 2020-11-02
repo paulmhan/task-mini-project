@@ -8,6 +8,7 @@ const wrongUserPassMsg = 'Incorrect username and/or password.';
 
 module.exports = async (ctx) => {
     const { email, password } = ctx.request.body;
+    console.log("Server is hit");
     if (!email) ctx.throw(422, 'Email required.');
     if (!password) ctx.throw(422, 'Password required.');
 
@@ -26,7 +27,7 @@ module.exports = async (ctx) => {
       // Only our server will know the secret, 
       const payload = { sub: dbUser.userID };
       const token = jwt.sign(payload, secret);
-      ctx.body = token;
+      ctx.body = { token };
     } else {
       ctx.throw(401, wrongUserPassMsg);
     }

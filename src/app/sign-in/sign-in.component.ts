@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router, ActivatedRoute } from '@angular/router';
+
+
+import { AuthService } from '../services/auth.service';
+import { RestService } from '../services/rest.service';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -7,7 +14,18 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  signinForm: FormGroup;
+  public readonly environment = environment;
+  public signinForm: FormGroup;
+  public loggingIn: boolean = false;
+  public loggingInError: string = '';
+
+  constructor(
+    private rest: RestService, 
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute){}
+
+
 
   ngOnInit(){
     this.signinForm = new FormGroup({
@@ -18,7 +36,18 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.signinForm);
-    this.signinForm.reset();
-  }
+    console.log(this.signinForm.value);
+    this.rest
+      .post(`${environment.apiURL}/auth`, this.signinForm.value)
+      .then(res => {
+        const { token } = res;
+        // console.log("JWT:", jwt);
+        this.auth.parseTokenAndSetState(token);
+      })
+      .catch(e => {
+        this.loggingIn = false;
+        this.loggingInError = 'Email / password not found';
+        console.log("ERROR");
+      });
+   } 
 }

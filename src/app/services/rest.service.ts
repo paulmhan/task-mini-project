@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { JWTService } from './jwt.service';
 
-import { environment } from '../../environments/environment';
-
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -44,6 +42,7 @@ export class RestService {
     let promise: Promise<any> = null;
 
     if (body) {
+      console.log("I'm hit");
       promise = this.http[httpMethod](url, body, {
         headers: this.buildOptions()
       })
@@ -55,14 +54,6 @@ export class RestService {
       })
         .toPromise()
         .catch(err => this.handleError(err));
-    }
-
-    if (!environment.production) {
-      promise.then(res => {
-        if (this.generateXhrLogs) {
-          this.generateLogs(httpMethod, url, body, res);
-        }
-      });
     }
 
     return promise;
@@ -132,6 +123,7 @@ export class RestService {
    * @return {RequestOptionsArgs}
    */
   private buildOptions(): HttpHeaders {
+    console.log("Build Options is hit");
     return new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this.jwt.checkToken()
