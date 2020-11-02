@@ -45,8 +45,8 @@ export class Auth {
         hashedPassword
       }
     );
-    console.log(dbUser);
-    const payload = { sub: dbUser.userID };
+    console.log("dbUser", dbUser);
+    const payload = { sub: dbUser.insertId };
     const token = jwt.sign(payload, secret);
     ctx.body = { token };
   }

@@ -70,7 +70,7 @@ export class SignUpComponent {
   onSubmit() {
     console.log(this.signupForm.value);
     this.rest
-      .post(`${environment.apiURL}/auth`, this.signupForm.value)
+      .post(`${environment.apiURL}/signup`, this.signupForm.value)
       .then(res => {
         const { token } = res;
         this.auth.parseTokenAndSetState(token);
