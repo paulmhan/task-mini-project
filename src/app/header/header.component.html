@@ -5,7 +5,7 @@
         <li routerLinkActive="active"><a routerLink="/sign-in">Sign In</a></li>
         <li routerLinkActive="active"><a routerLink="/sign-up">Sign Up</a></li>
         <li routerLinkActive="active"><a routerLink="/tasks">Tasks</a></li>
-        <li><a>Log Out</a></li>
+        <li (click)="onLogOut()"><a>Log Out</a></li>
       </ul>
       <!-- <ul class="nav navbar-nav navbar-right">
           <li class="dropdown" appDropdown>
