@@ -79,47 +79,27 @@ export class AuthService {
         return this.token;
     }
 
-    //   setRefresh(refresh: string): void {
-    //     try {
-    //       localStorage.setItem(this.refreshKey, refresh);
-    //       this.refresh = refresh;
-    //     } catch (err) {
-    //       this.defaultErrorHandler(err);
-    //     }
-    //   }
 
-    //   getRefresh(): string {
-    //     try {
-    //       if (localStorage.getItem(this.refreshKey) && localStorage.getItem(this.refreshKey) !== '') {
-    //         this.setRefresh(localStorage.getItem(this.refreshKey));
-    //       }
-    //     } catch (err) {
-    //       this.defaultErrorHandler(err);
-    //     }
+      setExpires(expires: number): void {
+        try {
+          localStorage.setItem(this.expiresKey, String(expires));
+          this.expires = expires;
+        } catch (err) {
+          this.defaultErrorHandler(err);
+        }
+      }
 
-    //     return this.refresh;
-    //   }
+      getExpires(): number {
+        try {
+          if (localStorage.getItem(this.expiresKey) && localStorage.getItem(this.expiresKey) !== '') {
+            this.setExpires(Number(localStorage.getItem(this.expiresKey)));
+          }
+        } catch (err) {
+          this.defaultErrorHandler(err);
+        }
 
-    //   setExpires(expires: number): void {
-    //     try {
-    //       localStorage.setItem(this.expiresKey, String(expires));
-    //       this.expires = expires;
-    //     } catch (err) {
-    //       this.defaultErrorHandler(err);
-    //     }
-    //   }
-
-    //   getExpires(): number {
-    //     try {
-    //       if (localStorage.getItem(this.expiresKey) && localStorage.getItem(this.expiresKey) !== '') {
-    //         this.setExpires(Number(localStorage.getItem(this.expiresKey)));
-    //       }
-    //     } catch (err) {
-    //       this.defaultErrorHandler(err);
-    //     }
-
-    //     return this.expires;
-    //   }
+        return this.expires;
+      }
 
     setUser(user: AuthUser): void {
         try {
@@ -130,17 +110,17 @@ export class AuthService {
         }
     }
 
-    //   getUser(): AuthUser {
-    //     try {
-    //       if (localStorage.getItem(this.userKey)) {
-    //         this.user = JSON.parse(localStorage.getItem(this.userKey));
-    //       }
-    //     } catch (err) {
-    //       this.defaultErrorHandler(err);
-    //     }
+      getUser(): AuthUser {
+        try {
+          if (localStorage.getItem(this.userKey)) {
+            this.user = JSON.parse(localStorage.getItem(this.userKey));
+          }
+        } catch (err) {
+          this.defaultErrorHandler(err);
+        }
 
-    //     return this.user;
-    //   }
+        return this.user;
+      }
 
     parseTokenAndSetState(token: string): void {
         const base64Url = token.split('.')[1];
@@ -155,10 +135,10 @@ export class AuthService {
                     .join('')
             )
         );
-        console.log(token);
-        console.log(payload);
+        console.log("TOKEN", token);
+        console.log("PAYLOAD", payload);
         this.setToken(token);
-        // this.setExpires(payload.exp);
+        this.setExpires(payload.iat);
         this.setUser({
             sub: payload.sub,
         });
@@ -167,7 +147,7 @@ export class AuthService {
     logout() {
         this.setToken(null);
         // this.setRefresh(null);
-        // this.setExpires(null);
+        this.setExpires(null);
         this.setUser(null);
     }
 

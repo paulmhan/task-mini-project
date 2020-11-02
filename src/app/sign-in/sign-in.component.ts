@@ -45,7 +45,7 @@ export class SignInComponent implements OnInit {
       .then(res => {
         const { token } = res;
         this.auth.parseTokenAndSetState(token);
-        this.router.navigate(['/tasks'])
+        // this.router.navigate(['/tasks']);
         this.isLoggedIn = true;
         if (this.redirectUrl) {
           this.router.navigate([this.redirectUrl]);
