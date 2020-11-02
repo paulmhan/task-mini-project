@@ -46,6 +46,7 @@ app.use(async function dbConnection(ctx, next) {
 })
 
 router.post('/login', bodyParser(), Auth.login);
+router.post('/signup', bodyParser(), Auth.signup);
 router.get('/tasks', authenticated, tasksRoute);
 
 
