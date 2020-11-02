@@ -6,7 +6,7 @@ require('dotenv').config();
 // import errorHandler from './middleware/errorHandler';
 const errorHandler = require('./middleware/errorHandler');
 const authenticated = require('./middleware/authenticated');
-const authRoute = require('./routes/auth');
+const  { Auth } = require('./routes/auth');
 const tasksRoute = require('./routes/tasks');
 
 import * as Koa from 'koa';
@@ -45,7 +45,7 @@ app.use(async function dbConnection(ctx, next) {
     ctx.state.db.release();
 })
 
-router.post('/auth', bodyParser(), authRoute);
+router.post('/login', bodyParser(), Auth.login);
 router.get('/tasks', authenticated, tasksRoute);
 
 

@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
     this.loggingInError = null;
     console.log(this.signinForm.value);
     this.rest
-      .post(`${environment.apiURL}/auth`, this.signinForm.value)
+      .post(`${environment.apiURL}/login`, this.signinForm.value)
       .then(res => {
         const { token } = res;
         this.auth.parseTokenAndSetState(token);

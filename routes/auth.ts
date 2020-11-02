@@ -6,7 +6,9 @@ const bcrypt = require('../utilities/bcrypt.ts');
 const secret = process.env.JWT_SECRET || 'secret';
 const wrongUserPassMsg = 'Incorrect username and/or password.';
 
-module.exports = async (ctx) => {
+export class Auth {
+
+  static async login(ctx){
     const { email, password } = ctx.request.body;
     console.log("Server is hit");
     if (!email) ctx.throw(422, 'Email required.');
@@ -31,4 +33,9 @@ module.exports = async (ctx) => {
     } else {
       ctx.throw(401, wrongUserPassMsg);
     }
-};
+  };
+
+  static async signup(ctx){
+
+  }
+}

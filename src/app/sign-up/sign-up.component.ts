@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
+import { RestService } from '../services/rest.service';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +16,12 @@ import { CustomValidators } from '../custom-validators';
 export class SignUpComponent {
   public signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder, 
+    private rest: RestService, 
+    private auth: AuthService, 
+    private router: Router
+    ) {
     this.signupForm = this.createSignupForm();
   }
 
@@ -57,7 +68,16 @@ export class SignUpComponent {
   }
 
   onSubmit() {
-    // do signup or something
     console.log(this.signupForm.value);
+    this.rest
+      .post(`${environment.apiURL}/auth`, this.signupForm.value)
+      .then(res => {
+        const { token } = res;
+        this.auth.parseTokenAndSetState(token);
+        this.router.navigate(['/tasks']);
+      })
+      .catch(e => {
+        console.log("ERROR ON SIGN UP");
+      });
   }
 }
