@@ -62,16 +62,16 @@ export class AuthService {
                 //   this.router.navigate(['/Logout']);
                 //   this.logout();
                 // } else {
-                console.log("error1");
+                console.log("Token in header");
                 this.setToken(localStorage.getItem(this.tokenKey));
                 // }
             } else {
-                console.log("error2");
+                console.log("No token in header");
 
                 return '';
             }
         } catch (err) {
-            console.log("error3");
+            console.log("Error from Get Token ");
 
             this.defaultErrorHandler(err);
         }

@@ -17,12 +17,13 @@ import { File } from "../shared/files.model";
 export class TaskService {
   tasksChanged = new Subject<Task[]>();
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private rest:RestService){}
   private tasks: Task[] = [];
 
   getTasks(): Promise<Task[]> {
     console.log("Get Task is hit");
-    return this.http.get<Task[]>(`${environment.apiURL}/tasks`).toPromise();
+    return this.rest.get(`${environment.apiURL}/tasks`);
+    // return this.http.get<Task[]>(`${environment.apiURL}/tasks`).toPromise();
   }
 
   getTask(index: number){
