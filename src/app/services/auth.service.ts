@@ -16,6 +16,9 @@ interface JwtPayload extends AuthUser {
 
 @Injectable()
 export class AuthService {
+    isLoggedIn: boolean = false;
+    // store the URL so we can redirect after logging in
+    public redirectUrl: string;
     public token: string = null;
     public refresh: string = null;
     public expires: number = 0;
