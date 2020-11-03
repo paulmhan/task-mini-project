@@ -55,27 +55,6 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col-xs-12" formArrayName="files">
-                    <label>Files</label>
-                    <div class="row" style="margin-top: 10px;" *ngFor="let fileCtrl of fileControls; let i = index"
-                        [formGroupName]="i">
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" formControlName="filePath">
-                        </div>
-                        <div class="col-xs-2">
-                            <button type="button" class="btn btn-danger" (click)="onDeleteFile(i)">X</button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-success" (click)="onAddFile()">Add File</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
 

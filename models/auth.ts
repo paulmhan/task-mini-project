@@ -23,7 +23,6 @@ export default class Users {
 
     static async findUserByEmail(ctx) {
         console.log(ctx.request.body)
-        // console.log("email", email);
         let email = ctx.request.body.email;
         const [data] = await global.db.query(
             `SELECT * FROM users WHERE email = :email`,

@@ -20,7 +20,6 @@ export class Auth {
         email
       }
     );
-    // console.log("+++++++", dbUser);
     if (!dbUser) ctx.throw(401, wrongUserPassMsg);
     if (await bcrypt.compare(password, dbUser.password)) {
       // payload: the actual data we want to store in the token

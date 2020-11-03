@@ -55,24 +55,11 @@ export class AuthService {
   getToken(): string {
     try {
       if (localStorage.getItem(this.tokenKey) && localStorage.getItem(this.tokenKey) !== '') {
-        // const expires = Number(localStorage.getItem(this.expiresKey));
-        // const seconds = Math.floor(new Date().getTime() / 1000);
-
-        // if (seconds >= expires) {
-        //   this.router.navigate(['/Logout']);
-        //   this.logout();
-        // } else {
-        console.log("Token in header");
         this.setToken(localStorage.getItem(this.tokenKey));
-        // }
       } else {
-        console.log("No token in header");
-
         return '';
       }
     } catch (err) {
-      console.log("Error from Get Token ");
-
       this.defaultErrorHandler(err);
     }
 

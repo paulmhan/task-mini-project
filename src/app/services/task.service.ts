@@ -6,7 +6,6 @@ import { environment } from "../../environments/environment";
 import { Task } from "../tasks/task.model";
 import { RestService } from '../services/rest.service';
 import { SubTask } from "../shared/sub-tasks.model";
-import { File } from "../shared/files.model";
 
 
 
@@ -23,7 +22,6 @@ export class TaskService {
   getTasks(): Promise<Task[]> {
     console.log("Get Task is hit");
     return this.rest.get(`${environment.apiURL}/tasks`);
-    // return this.http.get<Task[]>(`${environment.apiURL}/tasks`).toPromise();
   }
 
   getTask(index: number){
