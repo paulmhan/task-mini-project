@@ -18,6 +18,7 @@ import { TaskService } from "./services/task.service";
 import { JWTService } from './services/jwt.service';
 import { AuthService } from './services/auth.service';
 import { RestService } from './services/rest.service';
+import { IsLoggedInAuthGuardService } from './services/auth-guard.service';
 
 
 
@@ -47,7 +48,8 @@ import { RestService } from './services/rest.service';
     TaskService,
     RestService,
     JWTService,
-    AuthService
+    AuthService,
+    IsLoggedInAuthGuardService
 ],
   bootstrap: [AppComponent]
 })

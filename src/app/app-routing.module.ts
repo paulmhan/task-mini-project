@@ -6,7 +6,8 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
 import { TasksComponent } from "./tasks/tasks.component";
 import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
 import { TaskAddComponent } from "./tasks/task-add/task-add.component";
-import { AuthGuard } from '../app/auth/auth.guard';
+import { IsLoggedInAuthGuardService } from './services/auth-guard.service';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
       { path: 'add', component: TaskAddComponent },
       { path: ':id', component: TaskDetailsComponent }
     ],
-    // canActivate: [AuthGuard] 
+    canActivate: [IsLoggedInAuthGuardService],
   },
 ];
 

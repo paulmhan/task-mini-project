@@ -35,13 +35,13 @@ export class AuthService {
     constructor(public readonly router: Router) { }
 
 
-    //   loggedIn(): boolean {
-    //     if (this.getToken() && this.getUser()) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   }
+      loggedIn(): boolean {
+        if (this.getToken() && this.getUser()) {
+          return true;
+        } else {
+          return false;
+        }
+      }
 
     setToken(token: string): void {
         try {
