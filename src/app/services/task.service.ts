@@ -39,11 +39,11 @@ export class TaskService {
     this.tasks = tasks;
   }
 
-  deleteTask(index: number): Observable<{}>{
+  deleteTask(index: number){
     this.tasks.splice(index,1);
     this.tasksChanged.next(this.tasks.slice());
     let i = index + 1;
-    return this.http.delete(`${environment.apiURL}/tasks/delete/${i}`);
+    return this.rest.delete(`${environment.apiURL}/tasks/delete/${i}`);
   }
 
   getSubTasks(index: number){

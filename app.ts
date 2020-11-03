@@ -53,6 +53,7 @@ router.post('/signup', Auth.signup);
 
 router.post('/tasks/add', authenticated, Tasks.addTask);
 
+router.delete('/tasks/delete/:id', Tasks.deleteTask);
 
 
 app

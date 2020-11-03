@@ -44,4 +44,15 @@ export class Tasks {
         );
         return ctx.body = data;
     }
+
+    static async deleteTask(ctx) {
+        let taskID = ctx.params.id;
+        const [data] = await globalAny.db.query(
+            'DELETE FROM tasks WHERE taskID = :taskID',
+            {
+                taskID
+            }
+        );
+        return ctx.body = data;
+    }
 };
