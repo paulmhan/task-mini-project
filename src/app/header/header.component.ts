@@ -8,10 +8,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  isAuthenticated = false;
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.auth.loggedIn();
   }
 
   onLogOut(){
