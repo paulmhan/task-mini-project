@@ -7,7 +7,7 @@ require('dotenv').config();
 const errorHandler = require('./middleware/errorHandler');
 const authenticated = require('./middleware/authenticated');
 const  { Auth } = require('./routes/auth');
-const tasksRoute = require('./routes/tasks');
+const { Tasks } = require('./routes/tasks');
 
 import * as Koa from 'koa';
 import * as cors from 'koa2-cors';
@@ -25,6 +25,7 @@ app.use(cors({
     'Access-Control-Allow-Origin': '*',
     allowMethods: ['GET', 'POST', 'DELETE'],
 }));
+app.use(bodyParser());
 
 
 
@@ -45,9 +46,12 @@ app.use(async function dbConnection(ctx, next) {
     ctx.state.db.release();
 })
 
-router.post('/login', bodyParser(), Auth.login);
-router.post('/signup', bodyParser(), Auth.signup);
-router.get('/tasks', authenticated, tasksRoute);
+router.get('/tasks', authenticated, Tasks.getTasks);
+
+router.post('/login', Auth.login);
+router.post('/signup', Auth.signup);
+
+router.post('/tasks/add', authenticated, Tasks.addTask);
 
 
 

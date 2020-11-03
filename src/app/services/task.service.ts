@@ -20,7 +20,6 @@ export class TaskService {
   private tasks: Task[] = [];
 
   getTasks(): Promise<Task[]> {
-    console.log("Get Task is hit");
     return this.rest.get(`${environment.apiURL}/tasks`);
   }
 
@@ -31,7 +30,9 @@ export class TaskService {
   addTask(task: Task): Promise<Task> {
     this.tasks.push(task);
     this.tasksChanged.next(this.tasks.slice());
-    return this.http.post<Task>(`${environment.apiURL}/tasks/add`, task).toPromise();
+    let taskID = this.tasks.indexOf(task) + 1;
+    task = {...task,taskID};
+    return this.rest.post(`${environment.apiURL}/tasks/add`, task);
   }
 
   setTasks(tasks: Task[]){
