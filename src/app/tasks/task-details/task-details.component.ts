@@ -14,7 +14,7 @@ export class TaskDetailsComponent implements OnInit {
 
   task: Task;
   id: number;
-  subTasks: [];
+  subTasks: string[] = [];
 
   constructor(private taskService: TaskService,
               private route: ActivatedRoute,
@@ -38,8 +38,11 @@ export class TaskDetailsComponent implements OnInit {
   }
   
   getSubTasks(id: number){
-    this.taskService.getSubTasks(id).then(res => {
-      console.log(res);
+    this.taskService.getSubTasks(id).then(subs => {
+      for(let sub of subs){
+        console.log(sub.title);
+        this.subTasks.push(sub.title);
+      }
     });
   }
 }
