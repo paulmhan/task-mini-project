@@ -38,6 +38,7 @@ export class TaskDetailsComponent implements OnInit {
   }
   
   getSubTasks(id: number){
+    this.subTasks = [];
     this.taskService.getSubTasks(id).then(subs => {
       for(let sub of subs){
         console.log(sub.title);
