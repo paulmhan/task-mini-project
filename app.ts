@@ -47,13 +47,14 @@ app.use(async function dbConnection(ctx, next) {
 })
 
 router.get('/tasks', authenticated, Tasks.getTasks);
+router.get('/subtasks/:id', Tasks.getSubTasks);
 
 router.post('/login', Auth.login);
 router.post('/signup', Auth.signup);
 
-router.post('/tasks/add', authenticated, Tasks.addTask);
+router.post('/add', authenticated, Tasks.addTask);
 
-router.delete('/tasks/delete/:id', Tasks.deleteTask);
+router.delete('/delete/:id', Tasks.deleteTask);
 
 
 app

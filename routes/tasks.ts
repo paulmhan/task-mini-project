@@ -56,7 +56,7 @@ export class Tasks {
         return ctx.body = data;
     }
 
-    static async getSubTaskById(ctx) {
+    static async getSubTasks(ctx) {
         let taskID = ctx.params.id;
         const [data] = await globalAny.db.query(
             'SELECT * FROM subTasks WHERE taskID = :taskID',

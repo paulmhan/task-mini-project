@@ -27,6 +27,7 @@ export class TaskDetailsComponent implements OnInit {
         (params: Params) => {
           this.id = +params['id'];
           this.task = this.taskService.getTask(this.id);
+          this.getSubTasks(this.id);
         }
       );
   }
@@ -34,5 +35,11 @@ export class TaskDetailsComponent implements OnInit {
   deleteTask() {
     this.taskService.deleteTask(this.id);
     this.router.navigate(['/tasks'], {relativeTo: this.route});
+  }
+  
+  getSubTasks(id: number){
+    this.taskService.getSubTasks(id).then(res => {
+      console.log(res);
+    });
   }
 }

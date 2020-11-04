@@ -32,7 +32,7 @@ export class TaskService {
     this.tasksChanged.next(this.tasks.slice());
     let taskID = this.tasks.indexOf(task) + 1;
     task = {...task,taskID};
-    return this.rest.post(`${environment.apiURL}/tasks/add`, task);
+    return this.rest.post(`${environment.apiURL}/add`, task);
   }
 
   setTasks(tasks: Task[]){
@@ -43,12 +43,12 @@ export class TaskService {
     this.tasks.splice(index,1);
     this.tasksChanged.next(this.tasks.slice());
     let i = index + 1;
-    return this.rest.delete(`${environment.apiURL}/tasks/delete/${i}`);
+    return this.rest.delete(`${environment.apiURL}/delete/${i}`);
   }
 
   getSubTasks(index: number){
     let i = index + 1;
-    return this.http.get(`${environment.apiURL}/subtasks/get/${i}`);
+    return this.rest.get(`${environment.apiURL}/subtasks/${i}`);
   }
 
 
