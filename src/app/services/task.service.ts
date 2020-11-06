@@ -23,6 +23,10 @@ export class TaskService {
     return this.rest.get(`${environment.apiURL}/tasks`);
   }
 
+  getTaskLength(): Promise<Task[]>{
+    return this.rest.get(`${environment.apiURL}/all`)
+  }
+
   getTask(index: number){
     return this.tasks[index];
   }
@@ -50,6 +54,8 @@ export class TaskService {
     let i = index + 1;
     return this.rest.get(`${environment.apiURL}/subtasks/${i}`);
   }
+
+
 
 
 

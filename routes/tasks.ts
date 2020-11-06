@@ -2,6 +2,14 @@ const globalAny: any = global;
 
 export class Tasks {
 
+
+    static async allTasks(ctx){
+        const [tasks] = await globalAny.db.query(
+            `SELECT * FROM tasks`,
+        );
+        ctx.body = tasks;
+    }
+
     static async getTasks(ctx) {
         const userID = ctx.request.jwtPayload.sub;
         const [tasks] = await globalAny.db.query(

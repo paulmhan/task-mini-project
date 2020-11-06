@@ -46,6 +46,7 @@ app.use(async function dbConnection(ctx, next) {
     ctx.state.db.release();
 })
 
+router.get('/all', authenticated, Tasks.allTasks);
 router.get('/tasks', authenticated, Tasks.getTasks);
 router.get('/subtasks/:id', Tasks.getSubTasks);
 
