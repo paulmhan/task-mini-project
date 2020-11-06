@@ -27,7 +27,7 @@ export class TaskAddComponent implements OnInit {
 
   onSubmit(){
     this.taskService.addTask(this.taskForm.value).then(res => {
-      // console.log(res);
+      console.log(res);
     });
     this.router.navigate(["../"], { relativeTo: this.route })
   }

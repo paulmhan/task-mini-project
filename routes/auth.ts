@@ -10,16 +10,17 @@ export class Auth {
 
   static async login(ctx) {
     const { email, password } = ctx.request.body;
+
     if (!email) ctx.throw(422, 'Email required.');
     if (!password) ctx.throw(422, 'Password required.');
 
-    // const dbUser = Users.findUserByEmail;
     const [[dbUser]] = await globalAny.db.query(
       `SELECT * FROM users WHERE email = :email`,
       {
         email
       }
     );
+    
     if (!dbUser) ctx.throw(401, wrongUserPassMsg);
     if (await bcrypt.compare(password, dbUser.password)) {
       // payload: the actual data we want to store in the token

@@ -1,9 +1,7 @@
 const globalAny: any = global;
 
 export class Tasks {
-
-
-    static async allTasks(ctx){
+    static async allTasks(ctx) {
         const [tasks] = await globalAny.db.query(
             `SELECT * FROM tasks`,
         );
@@ -35,7 +33,7 @@ export class Tasks {
                     'INSERT INTO subTasks (title, taskID) VALUES (:name, :taskID)',
                     {
                         name,
-                        taskID                        
+                        taskID
                     }
                 )
             }
