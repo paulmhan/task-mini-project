@@ -122,8 +122,6 @@ export class AuthService {
           .join('')
       )
     );
-    console.log("TOKEN", token);
-    console.log("PAYLOAD", payload);
     this.setToken(token);
     this.setExpires(payload.iat);
     this.setUser({

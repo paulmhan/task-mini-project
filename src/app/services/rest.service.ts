@@ -42,7 +42,6 @@ export class RestService {
     let promise: Promise<any> = null;
 
     if (body) {
-      console.log("I'm hit");
       promise = this.http[httpMethod](url, body, {
         headers: this.buildOptions()
       })
@@ -123,7 +122,6 @@ export class RestService {
    * @return {RequestOptionsArgs}
    */
   private buildOptions(): HttpHeaders {
-    console.log("Build Options is hit");
     return new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this.jwt.checkToken()

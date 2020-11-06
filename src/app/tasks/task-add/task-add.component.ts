@@ -26,7 +26,6 @@ export class TaskAddComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.taskForm.value);
     this.taskService.addTask(this.taskForm.value).then(res => {
       console.log(res);
     });

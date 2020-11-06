@@ -39,7 +39,6 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     this.loggingInError = null;
-    console.log(this.signinForm.value);
     this.rest
       .post(`${environment.apiURL}/login`, this.signinForm.value)
       .then(res => {
@@ -57,7 +56,6 @@ export class SignInComponent implements OnInit {
       .catch(e => {
         this.isLoggedIn = false;
         this.loggingInError = 'Email / password not found';
-        console.log("ERROR");
       });
   }
 }

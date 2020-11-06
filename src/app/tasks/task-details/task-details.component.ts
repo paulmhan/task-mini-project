@@ -41,7 +41,6 @@ export class TaskDetailsComponent implements OnInit {
     this.subTasks = [];
     this.taskService.getSubTasks(id).then(subs => {
       for(let sub of subs){
-        console.log(sub.title);
         this.subTasks.push(sub.title);
       }
     });

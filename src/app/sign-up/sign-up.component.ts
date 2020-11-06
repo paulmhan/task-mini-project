@@ -68,7 +68,6 @@ export class SignUpComponent {
   }
 
   onSubmit() {
-    console.log(this.signupForm.value);
     this.rest
       .post(`${environment.apiURL}/signup`, this.signupForm.value)
       .then(res => {
@@ -77,7 +76,6 @@ export class SignUpComponent {
         this.router.navigate(['/tasks']);
       })
       .catch(e => {
-        console.log("ERROR ON SIGN UP");
       });
   }
 }

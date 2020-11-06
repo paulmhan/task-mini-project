@@ -36,7 +36,6 @@ export class Auth {
   static async signup(ctx) {
     const { email, password } = ctx.request.body;
     let hashedPassword = await bcrypt.hash(password);
-    console.log(email, hashedPassword);
     const [dbUser] = await globalAny.db.query(
       `INSERT INTO users (email, password) VALUES (:email, :hashedPassword)`,
       {
@@ -44,7 +43,6 @@ export class Auth {
         hashedPassword
       }
     );
-    console.log("dbUser", dbUser);
     const payload = { sub: dbUser.insertId };
     const token = jwt.sign(payload, secret);
     ctx.body = { token };

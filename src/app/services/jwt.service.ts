@@ -12,7 +12,6 @@ export class JWTService {
    */
   checkToken(): string {
     if (this.auth.getToken()) {
-        console.log("There is a token")
       return this.auth.getToken();
     } else {
       return '';
